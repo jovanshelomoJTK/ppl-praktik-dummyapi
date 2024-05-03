@@ -1,6 +1,8 @@
 # ppl-praktik-dummyapi
 
-## Cara menjalankan test
+## Cara membuat report test
 ```
-mvn test
+mvn surefire-report:report
 ```
+
+Hasil report akan tergenerate pada `target/site/surefire-report.html`

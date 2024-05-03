@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.ppl.CreateTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.433 s <<< FAILURE! - in com.ppl.CreateTest
-com.ppl.CreateTest.create_valid_user_id  Time elapsed: 1.766 s  <<< FAILURE!
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 12.137 s <<< FAILURE! - in com.ppl.CreateTest
+com.ppl.CreateTest.create_valid_user_id  Time elapsed: 1.515 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.

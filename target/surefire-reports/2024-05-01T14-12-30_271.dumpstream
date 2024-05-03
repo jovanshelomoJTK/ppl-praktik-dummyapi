@@ -1,4 +1,0 @@
-# Created at 2024-05-01T14:12:30.805
-Boot Manifest-JAR contains absolute paths in classpath 'D:\documents\polban\sem 6\ppl praktik\W10\apitesting\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-
