@@ -113,7 +113,7 @@ Proses konfigurasi project menggunakan build automation pada file pom.xml
 ```
 
 
-# Struture Project Test
+# Structure Project Test
 Tujuan project adalah proses pengujian automation API user controller, sehingga kode program tersimpan dalam folder test. Berikut struktur proyek:
 ```
 ppl-praktik-dummyapi
@@ -149,3 +149,76 @@ ppl-praktik-dummyapi
 - package main berisi main program walau dalam program ini tidak digunakan karena berfokus pada testing
 - package test berisi test class untuk 4 API yaitu get user by id, create user, update user, dan delete user. Selain itu, berisi juga schema JSON dari data user sesuai pada models di dummyapi.io
 - package target berisi hasil generate test report
+
+# Workflow
+Langkah pembuatan test script
+1. Buat test class untuk tiap API(get,create,update, dan delete) pada src/test.
+2. Import library-library yang dibutuhkan, yaitu: dotenv, restassured, DisplayName dari JUnit, Test dari JUnit, BeforeEach dari JUnit, Matchers dari hamcrest
+3. Buat test case dalam bentuk method pada masing-masing test class berisi method HTTP Rest API, header, response status code, dan response body
+
+
+# How to Run Execution Testing
+Berikut proses untuk menjalankan eksekusi tes pada program melalui terminal
+```
+mvn surefire-report:report
+```
+## Persiapan Data
+Sebelum menjalankan test case, diperlukan persiapan data test:
+1. Ubah parameter header untuk app-id untuk seluruh pengujian yang menggunakan app-id  pada .header(“app-id”,{{APP_ID}})
+
+
+# Software Under test
+Pengujian dilakukan untuk API program user controller pada https://dummyapi.io/docs/user
+* hit api get profile user by id
+* hit api post new user
+* hit api update user by id
+* hit api delete user by id
+
+
+# Test Case
+Pembuatan test case meliputi test positif dan test negatif, yaitu
+
+
+## Test Case API User
+    1. Pemeriksaan berhasil melakukan get profile user by id
+    2. Pemeriksaan gagal get profile user, karena user id tidak ditemukan
+    3. Pemeriksaan berhasil membuat user baru
+    4. Pemeriksaan gagal membuat user baru karena email sudah digunakan
+    5. Pemeriksaan gagal membuat user baru karena tipe data suatu field tidak sesuai model/schema
+    6. Pemeriksaan gagal membuat user baru karena format isi suatu field tidak sesuai model
+    7. Pemeriksaan gagal membuat user baru karena panjang isi suatu field tidak sesuai model
+    8. Pemeriksaan berhasil ubah profile user by id
+    9. Pemeriksaan gagal ubah profile user by id karena tipe data suatu field tidak sesuai model/schema
+    10. Pemeriksaan gagal membuat user baru karena format isi suatu field tidak sesuai model
+    11. Pemeriksaan gagal membuat user baru karena panjang isi suatu field tidak sesuai model
+    12. Pemeriksaan berhasil hapus profile user by id
+    13. Pemeriksaan gagal hapus profile user by id karena id user tidak ada di sistem
+	
+
+
+Note. Pendekatan pengujian menggunakan black box testing dengan metode ECP dan BVA.
+Satuan unit adalah fitur atau fungsi software
+
+
+# Author
+<span style="font-size:0.7em;">
+Jovan Shelomo</br>
+Mey Meizia Galtiady</br>
+Rahma Alia Latifa</br>
+Kelompok B6 PPL</br>
+Jurusan Teknik Komputer dan Informatika</br>
+Politeknik Negeri Bandung</br>
+
+
+
+
+</span>
+
+
+# Reference
+Daftar resource yang dapat dipelajari
+- <a href="https://github.com/rest-assured/rest-assured/wiki/GettingStarted">REST Assured documentation</a>
+- <a href="https://junit.org/junit5/">JUnit documentation</a>
+- <a href="https://www.dotenv.org/docs/">Dotenv documentation</a>
+- <a href="https://hamcrest.org/">Hamcrest documentation</a>
+- <a href="https://maven.apache.org/surefire/maven-surefire-plugin/">Surefire Introduction</a>
