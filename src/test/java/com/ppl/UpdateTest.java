@@ -75,18 +75,19 @@ class UpdateTest {
                 .body("error", Matchers.equalTo("PARAMS_NOT_VALID"));
     }
 
-    // TC3-40
+    // TC3-39
     @Test
     @DisplayName("Update title  user dengan data valid (\"mr\", \"ms\", \"mrs\", \"miss\", \"dr\", \"\"), menggunakan header app-id yang valid dan id user yang valid")
     void update_user_title() {
         given()
                 .header("app-id", dotenv.get("APP_ID"))
+                .header("Content-Type", "application/json")
                 .body("{\"title\":\"miss\"}")
                 .put("/user/60d0fe4f5311236168a109cc")
                 .then()
                 .assertThat()
-                .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("user-schema.json"))
+                .statusCode(200)
                 .body("title", Matchers.equalTo("miss"));
     }
 }

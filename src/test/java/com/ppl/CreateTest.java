@@ -6,6 +6,9 @@ import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.hamcrest.Matchers;
 
@@ -22,6 +25,19 @@ class CreateTest {
 
                 // set url
                 RestAssured.baseURI = "https://dummyapi.io/data/v1";
+        }
+
+        // string generator untuk test pembuatan email (karena email tidak dapat double)
+        private String generateRandomEmail() {
+                String chars = "abcdefghijklmnopqrstuvwxyz1234567890";
+                StringBuilder sb = new StringBuilder();
+                Random rnd = new Random();
+                while (sb.length() < 18) { // length of the random string.
+                        int index = (int) (rnd.nextFloat() * chars.length());
+                        sb.append(chars.charAt(index));
+                }
+                String saltStr = sb.toString();
+                return saltStr + "@gmail.com";
         }
 
         // TC2-01
@@ -90,7 +106,9 @@ class CreateTest {
         // TC2-03
         @Test
         @DisplayName("Membuat user dengan seluruh field valid dengan data input first name, last name, dan email valid")
-        void create_valid_user_id() {
+        void create_valid_user() {
+                // generate random string for email
+                String randomEmail = generateRandomEmail();
                 given()
                                 .header("app-id", dotenv.get("APP_ID"))
                                 .header("Content-Type", "application/json")
@@ -99,7 +117,7 @@ class CreateTest {
                                                 "  \"firstName\": \"Jennie\",\n" +
                                                 "  \"lastName\": \"Kim\",\n" +
                                                 "  \"gender\": \"female\",\n" +
-                                                "  \"email\": \"jenniekim@example.com\",\n" +
+                                                "  \"email\": \"" + randomEmail + "\",\n" +
                                                 "  \"dateOfBirth\": \"1996-01-16T00:00:00.000Z\",\n" +
                                                 "  \"phone\": \"+1234567890\",\n" +
                                                 "  \"picture\": \"https://id.wikipedia.org/wiki/Jennie_(penyanyi)\",\n"
@@ -121,7 +139,7 @@ class CreateTest {
                                 .body("firstName", Matchers.equalTo("Jennie"))
                                 .body("lastName", Matchers.equalTo("Kim"))
                                 .body("gender", Matchers.equalTo("female"))
-                                .body("email", Matchers.equalTo("jenniekim@example.com"))
+                                .body("email", Matchers.equalTo(randomEmail))
                                 .body("dateOfBirth", Matchers.equalTo("1996-01-16T00:00:00.000Z"))
                                 .body("phone", Matchers.equalTo("+1234567890"))
                                 .body("picture", Matchers.equalTo("https://id.wikipedia.org/wiki/Jennie_(penyanyi)"))
