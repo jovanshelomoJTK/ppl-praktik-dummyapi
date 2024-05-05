@@ -164,7 +164,7 @@ mvn surefire-report:report
 ```
 ## Persiapan Data
 Sebelum menjalankan test case, diperlukan persiapan data test:
-1. Gunakan app-id yang didapatkan pada https://dummyapi.io/docs dan masukkan app-id tersebut pada file .env
+1. Gunakan app-id yang didapatkan pada https://dummyapi.io/ dan masukkan app-id tersebut pada file .env
 
 
 # Software Under test
