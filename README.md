@@ -116,35 +116,33 @@ Proses konfigurasi project menggunakan build automation pada file pom.xml
 # Struture Project Test
 Tujuan project adalah proses pengujian automation API user controller, sehingga kode program tersimpan dalam folder test. Berikut struktur proyek:
 ```
-
 ppl-praktik-dummyapi
-src
-  main/java/com/ppl
-  test
-    java/com/ppl
-      CreateTest.java
-      DeleteTest.java
-      GetTest.java
-      UpdateTest.java
-    resources
-      user-schema.json
-target
-  classes/com/ppl
-  javadoc-bundle-options
-  maven-status/maven-compiler-plugin
-  site
-    css
-    images
-    jacoco
-    surefire-report.html
-  surefire-reports
-  test-classes
-  jacoco.exec
-.editorconfig
-.env
-README.md
-pom.xml
-
+  src
+    main/java/com/ppl
+    test
+      java/com/ppl
+        CreateTest.java
+        DeleteTest.java
+        GetTest.java
+        UpdateTest.java
+      resources
+        user-schema.json
+  target
+    classes/com/ppl
+    javadoc-bundle-options
+    maven-status/maven-compiler-plugin
+    site
+      css
+      images
+      jacoco
+      surefire-report.html
+    surefire-reports
+    test-classes
+    jacoco.exec
+  .editorconfig
+  .env
+  README.md
+  pom.xml
 ```
 
 
